@@ -3,17 +3,21 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		43B524CF244626020012684B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B524CE244626020012684B /* AppDelegate.swift */; };
 		43B524D1244626020012684B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B524D0244626020012684B /* SceneDelegate.swift */; };
-		43B524D3244626020012684B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B524D2244626020012684B /* ContentView.swift */; };
 		43B524D5244626040012684B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B524D4244626040012684B /* Assets.xcassets */; };
 		43B524D8244626040012684B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43B524D7244626040012684B /* Preview Assets.xcassets */; };
 		43B524DB244626040012684B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43B524D9244626040012684B /* LaunchScreen.storyboard */; };
 		43B524E6244626040012684B /* GreenhouseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B524E5244626040012684B /* GreenhouseTests.swift */; };
+		43B524F22446354F0012684B /* SwiftMQTT in Frameworks */ = {isa = PBXBuildFile; productRef = 43B524F12446354F0012684B /* SwiftMQTT */; };
+		43B524F4244635780012684B /* TemperatureViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B524F3244635780012684B /* TemperatureViewModel.swift */; };
+		43B524F9244635D60012684B /* TemperatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B524F8244635D60012684B /* TemperatureView.swift */; };
+		43B524FC244636270012684B /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B524FB244636270012684B /* Theme.swift */; };
+		43B524FE2446397F0012684B /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43B524FD2446397F0012684B /* DataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +34,6 @@
 		43B524CB244626020012684B /* Greenhouse.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Greenhouse.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B524CE244626020012684B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43B524D0244626020012684B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		43B524D2244626020012684B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		43B524D4244626040012684B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43B524D7244626040012684B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		43B524DA244626040012684B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +41,10 @@
 		43B524E1244626040012684B /* GreenhouseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GreenhouseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43B524E5244626040012684B /* GreenhouseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenhouseTests.swift; sourceTree = "<group>"; };
 		43B524E7244626040012684B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43B524F3244635780012684B /* TemperatureViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureViewModel.swift; sourceTree = "<group>"; };
+		43B524F8244635D60012684B /* TemperatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureView.swift; sourceTree = "<group>"; };
+		43B524FB244636270012684B /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		43B524FD2446397F0012684B /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B524F22446354F0012684B /* SwiftMQTT in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,9 +87,10 @@
 		43B524CD244626020012684B /* Greenhouse */ = {
 			isa = PBXGroup;
 			children = (
+				43B524FA244636070012684B /* Extensions */,
+				43B524F6244635940012684B /* Temperature */,
 				43B524CE244626020012684B /* AppDelegate.swift */,
 				43B524D0244626020012684B /* SceneDelegate.swift */,
-				43B524D2244626020012684B /* ContentView.swift */,
 				43B524D4244626040012684B /* Assets.xcassets */,
 				43B524D9244626040012684B /* LaunchScreen.storyboard */,
 				43B524DC244626040012684B /* Info.plist */,
@@ -107,6 +116,40 @@
 			path = GreenhouseTests;
 			sourceTree = "<group>";
 		};
+		43B524F5244635860012684B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				43B524F8244635D60012684B /* TemperatureView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		43B524F6244635940012684B /* Temperature */ = {
+			isa = PBXGroup;
+			children = (
+				43B524F72446359C0012684B /* ViewModel */,
+				43B524F5244635860012684B /* View */,
+			);
+			path = Temperature;
+			sourceTree = "<group>";
+		};
+		43B524F72446359C0012684B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				43B524F3244635780012684B /* TemperatureViewModel.swift */,
+				43B524FD2446397F0012684B /* DataProvider.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		43B524FA244636070012684B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				43B524FB244636270012684B /* Theme.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -123,6 +166,9 @@
 			dependencies = (
 			);
 			name = Greenhouse;
+			packageProductDependencies = (
+				43B524F12446354F0012684B /* SwiftMQTT */,
+			);
 			productName = Greenhouse;
 			productReference = 43B524CB244626020012684B /* Greenhouse.app */;
 			productType = "com.apple.product-type.application";
@@ -173,6 +219,9 @@
 				Base,
 			);
 			mainGroup = 43B524C2244626020012684B;
+			packageReferences = (
+				43B524F02446354F0012684B /* XCRemoteSwiftPackageReference "SwiftMQTT" */,
+			);
 			productRefGroup = 43B524CC244626020012684B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -208,9 +257,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43B524FE2446397F0012684B /* DataProvider.swift in Sources */,
+				43B524F9244635D60012684B /* TemperatureView.swift in Sources */,
 				43B524CF244626020012684B /* AppDelegate.swift in Sources */,
 				43B524D1244626020012684B /* SceneDelegate.swift in Sources */,
-				43B524D3244626020012684B /* ContentView.swift in Sources */,
+				43B524FC244636270012684B /* Theme.swift in Sources */,
+				43B524F4244635780012684B /* TemperatureViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -473,6 +525,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		43B524F02446354F0012684B /* XCRemoteSwiftPackageReference "SwiftMQTT" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/aciidb0mb3r/SwiftMQTT.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		43B524F12446354F0012684B /* SwiftMQTT */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 43B524F02446354F0012684B /* XCRemoteSwiftPackageReference "SwiftMQTT" */;
+			productName = SwiftMQTT;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 43B524C3244626020012684B /* Project object */;
 }
