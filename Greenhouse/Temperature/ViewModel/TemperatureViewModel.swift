@@ -7,20 +7,26 @@
 //
 
 import SwiftMQTT
+import SwiftUI
 
-final class TemperatureViewModel {
-    private(set) var temperature: String = ""
-    private let dataProvider: DataProvider
+final class TemperatureViewModel: ObservableObject {
+    @ObservedObject var dataProvider: MQTTDataProvider
+    @Published var temperature: String?
     
-    init(dataProvider: DataProvider = MQTTDataProvider()) {
+    init(dataProvider: MQTTDataProvider = MQTTDataProvider()) {
         self.dataProvider = dataProvider
+        temperature = dataProvider.data
+    }
+    
+    func start() {
+        dataProvider.connect()
     }
 
-    private func update(temperatureInDegrees: Float) {
-        guard let degrees = dataProvider.temperatureData else {
-            temperature = ""
-            return
-        }
-        temperature = "\(degrees)°"
+    private func update(temperatureInDegrees: String?) {
+//        guard let degrees = temperatureInDegrees else {
+//            temperature = ""
+//            return
+//        }
+//        temperature = "\(degrees)°"
     }
 }

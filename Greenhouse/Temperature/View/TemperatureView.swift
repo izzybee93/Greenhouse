@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TemperatureView: View {
-    private let viewModel: TemperatureViewModel
+    @ObservedObject private var viewModel: TemperatureViewModel
     
     init(viewModel: TemperatureViewModel) {
         self.viewModel = viewModel
@@ -18,19 +18,27 @@ struct TemperatureView: View {
     var body: some View {
         ZStack {
             Color.background.edgesIgnoringSafeArea([.top, .bottom])
-            GeometryReader { geometry in
-                Text(self.viewModel.temperature)
-                    .font(.big)
-                    .bold().foregroundColor(.primary)
-                    .offset(CGSize(width: 0, height: -(geometry.size.height/6)))
-            }
+            TemperatureTextView()
         }
     }
 }
 
+private struct TemperatureTextView: View {
+    @State var temperature: String = ""
+    var body: some View {
+        GeometryReader { geometry in
+            Text(self.temperature)
+                .font(.big)
+                .bold().foregroundColor(.primary)
+                .offset(CGSize(width: 0, height: -(geometry.size.height/6)))
+        }
+    }
+}
+
+#if DEBUG
 struct TemperatureView_Preview: PreviewProvider {
     static var previews: some View {
         TemperatureView(viewModel: TemperatureViewModel())
     }
 }
-
+#endif
