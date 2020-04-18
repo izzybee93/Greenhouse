@@ -419,6 +419,7 @@
 				DEVELOPMENT_TEAM = 78ZTGHX497;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Greenhouse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -439,6 +440,7 @@
 				DEVELOPMENT_TEAM = 78ZTGHX497;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Greenhouse/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
