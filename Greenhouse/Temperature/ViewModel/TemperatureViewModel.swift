@@ -71,9 +71,3 @@ private extension Float {
         String(format: "%0.1f", self)
     }
 }
-
-struct TemperatureViewModel_Previews: PreviewProvider {
-    static var previews: some View {
-        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
-    }
-}
