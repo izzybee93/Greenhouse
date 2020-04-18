@@ -9,9 +9,12 @@
 import SwiftUI
 
 extension Color {
-    static let background = Color(red: 185/255, green: 249/255, blue: 100/255)
+    static let backgroundLight = Color(red: 185/255, green: 249/255, blue: 100/255)
+    static let backgroundDark = Color(white: 0.1)
+    static let foregroundLight = Color.backgroundDark
+    static let foregroundDark = Color.backgroundLight
 }
 
 extension Font {
-    static let big = Font.system(size: 150)
+    static let big = Font.system(size: 80)
 }

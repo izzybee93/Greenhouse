@@ -8,25 +8,72 @@
 
 import SwiftMQTT
 import SwiftUI
+import Combine
 
 final class TemperatureViewModel: ObservableObject {
     @ObservedObject var dataProvider: MQTTDataProvider
-    @Published var temperature: String?
+    var cancellable: AnyCancellable?
+
+    @Published var temperature: String
+    private var temperatureC: String?
+
+    private var temperatureF: String {
+        guard let celcius = temperatureC, let float = Float(celcius) else { return "" }
+        let fahrenheit = (float * 9/5) + 32
+        return fahrenheit.formattedOneDecimal
+    }
+    
+    private var unit: Unit = .c
     
     init(dataProvider: MQTTDataProvider = MQTTDataProvider()) {
         self.dataProvider = dataProvider
-        temperature = dataProvider.data
+        temperatureC = dataProvider.data
+        temperature = "--°C"
+        cancellable = dataProvider.dataPublisher.print().sink { [weak self] in
+              self?.updateTemperature()
+        }
+        start()
     }
     
     func start() {
         dataProvider.connect()
     }
+    
+    func changeUnit() {
+        unit = unit == .c ? .f : .c
+        temperature = formattedTemperature()
+    }
 
-    private func update(temperatureInDegrees: String?) {
-//        guard let degrees = temperatureInDegrees else {
-//            temperature = ""
-//            return
-//        }
-//        temperature = "\(degrees)°"
+    private func updateTemperature() {
+        guard let temp = dataProvider.data, let float = Float(temp) else { return }
+        let rounded = ((float * 10).rounded()) / 10
+        temperatureC = rounded.formattedOneDecimal
+        temperature = formattedTemperature()
+    }
+    
+    private func formattedTemperature() -> String {
+        switch unit {
+        case .c: return "\(temperatureC ?? "")°C"
+        case .f: return "\(temperatureF)°F"
+        }
+    }
+}
+
+extension TemperatureViewModel {
+    enum Unit {
+        case c
+        case f
+    }
+}
+
+private extension Float {
+    var formattedOneDecimal: String {
+        String(format: "%0.1f", self)
+    }
+}
+
+struct TemperatureViewModel_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }

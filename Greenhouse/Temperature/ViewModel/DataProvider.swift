@@ -16,7 +16,8 @@ protocol DataProvider {
 }
 
 final class MQTTDataProvider: DataProvider, ObservableObject {
-    @Published private(set) var data: String?
+    @Published var data: String?
+     let dataPublisher = PassthroughSubject<Void, Never>()
     
     private let mqttSession: MQTTSession
     private let topic = "greenhouse/temp"
@@ -70,6 +71,9 @@ final class MQTTDataProvider: DataProvider, ObservableObject {
     
     private func handleError(_ error: MQTTSessionError) {
         print("🐛 \(error.description)")
+        if error == .socketError {
+            connect()
+        }
     }
     
     deinit {
@@ -80,7 +84,9 @@ final class MQTTDataProvider: DataProvider, ObservableObject {
 extension MQTTDataProvider: MQTTSessionDelegate {
     func mqttDidReceive(message: MQTTMessage, from session: MQTTSession) {
         guard message.topic == topic else { return }
+        print(message)
         data = message.stringRepresentation
+        dataPublisher.send()
     }
 
     func mqttDidAcknowledgePing(from session: MQTTSession) {
